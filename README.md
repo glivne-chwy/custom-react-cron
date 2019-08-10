@@ -1,6 +1,6 @@
 # react-cron-generator
 
-Simple react component to generate cron expression
+Simple customizable react component to generate cron expression
 
 ## Getting Started
 
@@ -11,11 +11,11 @@ Make sure you have include bootstrap in your project
 data = '* * * * * * *'
 ```
 ```
-npm install react-cron-generator
+npm install custom-react-cron
 
 ```
 ## demo
-[Live demo](https://sojinantony01.github.io/react-cron-generator/)
+[Live demo](https://glivne-chewy.github.io/custom-react-cron/)
 
 ![alt text](https://raw.githubusercontent.com/sojinantony01/react-cron-generator/master/public/images/Screenshot%20from%202019-06-08%2000-31-31.png)
 
