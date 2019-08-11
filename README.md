@@ -24,8 +24,8 @@ npm install custom-react-cron
 
 ```
 import React, { Component } from 'react'
-import Cron from 'react-cron-generator'
-import 'react-cron-generator/dist/cron-builder.css'
+import CustomCron from 'custom-react-cron'
+import 'custom-react-cron/dist/cron-builder.css'
 
 
 class App extends Component {
