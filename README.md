@@ -39,7 +39,7 @@ class App extends Component {
 
   render() {
     return (<div>
-      <Cron
+      <CustomCron
         onChange={(e)=> {this.setState({value:e}); console.log(e)}}
         value={this.state.value}
         showResultText={true}
