@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-export default class Cron extends Component {
+export default class CustomCron extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -71,15 +71,17 @@ export default class Cron extends Component {
         )
     }
     getHours() {
-        let hours = []
-        for(let i = 0 ; i<24 ; i++) {
+        let hours = [];
+        let leap = parseInt(this.state.hours) || 1;
+        for(let i = 0 ; i<24 ; i = i + leap) {
             hours.push(<option value={i < 10 ? `0${i}` : i}>{i < 10 ? `0${i}` : i}</option>)
         }
         return hours;
     }
     getMinutes() {
-        let minutes = []
-        for(let i = 0 ; i<60 ; i++) {
+        let minutes = [];
+        let leap = parseInt(this.state.minutes) || 1;
+        for(let i = 0 ; i<60 ; i = i + leap) {
             minutes.push(<option value={i < 10 ? `0${i}` : i}>{i < 10 ? `0${i}` : i}</option>)
         }
         return minutes;

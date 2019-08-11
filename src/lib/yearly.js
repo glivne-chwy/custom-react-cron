@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default  class Cron extends Component {
+export default  class CustomCron extends Component {
     constructor(props) {
         super(props);
         this.state = {

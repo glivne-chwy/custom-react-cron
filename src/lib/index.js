@@ -7,18 +7,27 @@ import Weekly from './weekly';
 import Monthly from './monthly';
 import Yearly from './yearly';
 // import './cron-builder.css';
-const tabs = ['Minutes','Hourly','Daily','Weekly', 'Monthly'] //,'Yearly'
-export default class Cron extends Component {
+const defaultTabs = ['Minutes','Hourly','Daily','Weekly', 'Monthly'] //,'Yearly'
+const defaultTabsVal = {
+    Minutes: ['0','0/1','*','*','*','?','*'],
+    Hourly: ['0','0','00','1/1','*','?','*'],
+    Daily: ['0','0','00','1/1','*','?','*'],
+    Weekly: ['0','0','00','?','*','*','*'],
+    Monthly:['0','0','00','1','1/1','?','*']
+};
+const tabs = [];
+export default class CustomCron extends Component {
     constructor(props) {
         super(props);
         this.state = {
         //    selectedTab: tabs[0],
            
         };
+        tabs = this.props.tabs || defaultTabs;
     }
     componentWillMount() {
         if(!this.props.value || this.props.value.split(' ').length !== 7 ) {
-            this.state.value = ['0','0','00','1/1','*','?','*']
+            this.state.value = defaultTabsVal[tabs[0]];
             this.state.selectedTab = tabs[0];
             this.parentChange(this.state.value)
         } else  {
@@ -26,39 +35,39 @@ export default class Cron extends Component {
         }
         let val = this.state.value;
         if((val[1].search('/') !== -1) && (val[2] == '*') && (val[3] == '1/1')) {
-            this.state.selectedTab = tabs[0];
+            this.state.selectedTab = defaultTabs[0];
         } else if((val[3] == '1/1')) {
-            this.state.selectedTab = tabs[1];
+            this.state.selectedTab = defaultTabs[1];
         } else if((val[3].search('/') !== -1) || (val[5] == 'MON-FRI')) {
-            this.state.selectedTab = tabs[2];
+            this.state.selectedTab = defaultTabs[2];
         } else if (val[3] === '?') {
-            this.state.selectedTab = tabs[3];
+            this.state.selectedTab = defaultTabs[3];
         } else if (val[3].startsWith('L') || val[4] === '1/1') {
-            this.state.selectedTab = tabs[4];
+            this.state.selectedTab = defaultTabs[4];
         } else {
-            this.state.selectedTab = tabs[0];
+            this.state.selectedTab = defaultTabs[0];
         }
        
     }
 
     defaultValue(tab) {
         switch(tab) {
-            case tabs[0] : 
+            case defaultTabs[0] : 
                 return   ['0','0/1','*','*','*','?','*']
                 break;
-            case tabs[1] : 
+            case defaultTabs[1] : 
                 return   ['0','0','00','1/1','*','?','*']
                 break;
-            case tabs[2] : 
+            case defaultTabs[2] : 
                 return   ['0','0','00','1/1','*','?','*']
                 break;
-            case tabs[3] : 
+            case defaultTabs[3] : 
                 return   ['0','0','00','?','*','*','*']
                 break;
-            case tabs[4] : 
+            case defaultTabs[4] : 
                 return   ['0','0','00','1','1/1','?','*']
                 break;
-            case tabs[5] : 
+            case defaultTabs[5] : 
                 return   ['0','0','00','1','1/1','?','*']
                 break;
             default: 
@@ -104,22 +113,22 @@ export default class Cron extends Component {
     getComponent(tab) {
         switch(tab) {
             case tabs[0] : 
-                return   <Minutes value={this.state.value} onChange={this.onValueChange.bind(this)}/>
+                return <Minutes value={this.state.value} onChange={this.onValueChange.bind(this)}/>
                 break;
             case tabs[1] : 
-                return   <Hourly value={this.state.value} onChange={this.onValueChange.bind(this)}/>
+                return <Hourly value={this.state.value} hours={this.state.hours} minutes={this.state.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
             case tabs[2] : 
-                return   <Daily value={this.state.value} onChange={this.onValueChange.bind(this)}/>
+                return <Daily value={this.state.value} hours={this.state.hours} minutes={this.state.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
             case tabs[3] : 
-                return   <Weekly value={this.state.value} onChange={this.onValueChange.bind(this)}/>
+                return <Weekly value={this.state.value} hours={this.state.hours} minutes={this.state.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
             case tabs[4] : 
-                return   <Monthly value={this.state.value} onChange={this.onValueChange.bind(this)}/>
+                return <Monthly value={this.state.value} hours={this.state.hours} minutes={this.state.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
             case tabs[5] : 
-                return   <Yearly value={this.state.value} onChange={this.onValueChange.bind(this)}/>
+                return <Yearly value={this.state.value} hours={this.state.hours} minutes={this.state.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
             default: 
                 return
@@ -127,15 +136,19 @@ export default class Cron extends Component {
     }
 
     render() {
-        return (    
-            <div className='cron_builder'>
-            <ul className="nav nav-tabs" >
-                {this.getHeaders()}
-            </ul>
-            <div className="cron_builder_bordering">{this.getComponent(this.state.selectedTab)}</div>
-            {this.props.showResultText && <div className="cron-builder-bg">{this.getVal()}</div>}
-            {this.props.showResultCron && <div className="cron-builder-bg">{this.state.value.toString().replace(/,/g,' ').replace(/!/g, ',')}</div>}       
-        </div>)
+        return (
+            <div>
+                {this.state.style && <style>{this.state.style}</style>}
+                <div className='cron_builder'>
+                    <ul className="nav nav-tabs" >
+                        {this.getHeaders()}
+                    </ul>
+                    <div className="cron_builder_bordering">{this.getComponent(this.state.selectedTab)}</div>
+                    {this.props.showResultText && <div className="cron-builder-bg">{this.getVal()}</div>}
+                    {this.props.showResultCron && <div className="cron-builder-bg">{this.state.value.toString().replace(/,/g,' ').replace(/!/g, ',')}</div>}
+                </div>
+            </div>
+        )
     }
 }
 
