@@ -68,7 +68,6 @@ class App extends Component {
         hours={2}
         minutes={15}
         style={this.cronStyle}
-        value={this.state.value}
         showResultText={true}
         showResultCron={true}
         />
@@ -90,7 +89,6 @@ export default App;
 | style | change style use existing classes: cron_builder, cron_builder_bordering, nav, nav-tabs, row, well, tab-content, active, col-md-6, col-sm-6 |  |
 | hours | set hours leaps | 1 |
 | minutes | set minutes leaps | 1 |
-| onChange |  |  |
 | showResultText | show in readable text format | false |
 | showResultCron | show cron expression | false | 
 ## Acknowledgments
