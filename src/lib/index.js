@@ -23,7 +23,7 @@ export default class CustomCron extends Component {
         //    selectedTab: tabs[0],
            
         };
-        tabs = this.props.tabs || defaultTabs;
+        tabs = props.tabs || defaultTabs;
     }
     componentWillMount() {
         if(!this.props.value || this.props.value.split(' ').length !== 7 ) {
@@ -116,19 +116,19 @@ export default class CustomCron extends Component {
                 return <Minutes value={this.state.value} onChange={this.onValueChange.bind(this)}/>
                 break;
             case tabs[1] : 
-                return <Hourly value={this.state.value} hours={this.state.hours} minutes={this.state.minutes} onChange={this.onValueChange.bind(this)}/>
+                return <Hourly value={this.state.value} hours={this.props.hours} minutes={this.props.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
             case tabs[2] : 
-                return <Daily value={this.state.value} hours={this.state.hours} minutes={this.state.minutes} onChange={this.onValueChange.bind(this)}/>
+                return <Daily value={this.state.value} hours={this.props.hours} minutes={this.props.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
             case tabs[3] : 
-                return <Weekly value={this.state.value} hours={this.state.hours} minutes={this.state.minutes} onChange={this.onValueChange.bind(this)}/>
+                return <Weekly value={this.state.value} hours={this.props.hours} minutes={this.props.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
             case tabs[4] : 
-                return <Monthly value={this.state.value} hours={this.state.hours} minutes={this.state.minutes} onChange={this.onValueChange.bind(this)}/>
+                return <Monthly value={this.state.value} hours={this.props.hours} minutes={this.props.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
             case tabs[5] : 
-                return <Yearly value={this.state.value} hours={this.state.hours} minutes={this.state.minutes} onChange={this.onValueChange.bind(this)}/>
+                return <Yearly value={this.state.value} hours={this.props.hours} minutes={this.props.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
             default: 
                 return
@@ -138,7 +138,7 @@ export default class CustomCron extends Component {
     render() {
         return (
             <div>
-                {this.state.style && <style>{this.state.style}</style>}
+                {this.props.style && <style>{this.props.style}</style>}
                 <div className='cron_builder'>
                     <ul className="nav nav-tabs" >
                         {this.getHeaders()}
