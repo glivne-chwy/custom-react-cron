@@ -15,7 +15,7 @@ const defaultTabsVal = {
     Weekly: ['0','0','00','?','*','*','*'],
     Monthly:['0','0','00','1','1/1','?','*']
 };
-const tabs = [];
+let tabs = [];
 export default class CustomCron extends Component {
     constructor(props) {
         super(props);

@@ -3,7 +3,6 @@ import _createClass from "@babel/runtime/helpers/esm/createClass";
 import _possibleConstructorReturn from "@babel/runtime/helpers/esm/possibleConstructorReturn";
 import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime/helpers/esm/inherits";
-import _readOnlyError from "@babel/runtime/helpers/esm/readOnlyError";
 import React, { Component } from 'react';
 import cronstrue from 'cronstrue';
 import Minutes from './minutes';
@@ -37,7 +36,7 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CustomCron).call(this, props));
     _this.state = {//    selectedTab: tabs[0],
     };
-    tabs = (_readOnlyError("tabs"), props.tabs || defaultTabs);
+    tabs = props.tabs || defaultTabs;
     return _this;
   }
 
