@@ -6,17 +6,17 @@ import _assertThisInitialized from "@babel/runtime/helpers/esm/assertThisInitial
 import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { Component } from 'react';
 
-var Cron =
+var CustomCron =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Cron, _Component);
+  _inherits(CustomCron, _Component);
 
-  function Cron(props) {
+  function CustomCron(props) {
     var _this;
 
-    _classCallCheck(this, Cron);
+    _classCallCheck(this, CustomCron);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Cron).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CustomCron).call(this, props));
     _this.state = {
       hour: 0,
       minute: 0
@@ -27,7 +27,7 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(Cron, [{
+  _createClass(CustomCron, [{
     key: "componentWillMount",
     value: function componentWillMount() {
       this.state.value = this.props.value;
@@ -113,184 +113,46 @@ function (_Component) {
         className: "hours",
         onChange: this.onAtHourChange,
         value: this.state.value[2]
-      }, React.createElement("option", {
-        id: "0"
-      }, "00"), React.createElement("option", {
-        id: "1"
-      }, "01"), React.createElement("option", {
-        id: "2"
-      }, "02"), React.createElement("option", {
-        id: "3"
-      }, "03"), React.createElement("option", {
-        id: "4"
-      }, "04"), React.createElement("option", {
-        id: "5"
-      }, "05"), React.createElement("option", {
-        id: "6"
-      }, "06"), React.createElement("option", {
-        id: "7"
-      }, "07"), React.createElement("option", {
-        id: "8"
-      }, "08"), React.createElement("option", {
-        id: "9"
-      }, "09"), React.createElement("option", {
-        id: "10"
-      }, "10"), React.createElement("option", {
-        id: "11"
-      }, "11"), React.createElement("option", {
-        id: "12"
-      }, "12"), React.createElement("option", {
-        id: "13"
-      }, "13"), React.createElement("option", {
-        id: "14"
-      }, "14"), React.createElement("option", {
-        id: "15"
-      }, "15"), React.createElement("option", {
-        id: "16"
-      }, "16"), React.createElement("option", {
-        id: "17"
-      }, "17"), React.createElement("option", {
-        id: "18"
-      }, "18"), React.createElement("option", {
-        id: "19"
-      }, "19"), React.createElement("option", {
-        id: "20"
-      }, "20"), React.createElement("option", {
-        id: "21"
-      }, "21"), React.createElement("option", {
-        id: "22"
-      }, "22"), React.createElement("option", {
-        id: "23"
-      }, "23")), React.createElement("select", {
+      }, this.getHours()), React.createElement("select", {
         id: "DailyMinutes",
         className: "minutes",
         onChange: this.onAtMinuteChange,
         value: this.state.value[1]
-      }, React.createElement("option", {
-        id: "0"
-      }, "00"), React.createElement("option", {
-        id: "1"
-      }, "01"), React.createElement("option", {
-        id: "2"
-      }, "02"), React.createElement("option", {
-        id: "3"
-      }, "03"), React.createElement("option", {
-        id: "4"
-      }, "04"), React.createElement("option", {
-        id: "5"
-      }, "05"), React.createElement("option", {
-        id: "6"
-      }, "06"), React.createElement("option", {
-        id: "7"
-      }, "07"), React.createElement("option", {
-        id: "8"
-      }, "08"), React.createElement("option", {
-        id: "9"
-      }, "09"), React.createElement("option", {
-        id: "10"
-      }, "10"), React.createElement("option", {
-        id: "11"
-      }, "11"), React.createElement("option", {
-        id: "12"
-      }, "12"), React.createElement("option", {
-        id: "13"
-      }, "13"), React.createElement("option", {
-        id: "14"
-      }, "14"), React.createElement("option", {
-        id: "15"
-      }, "15"), React.createElement("option", {
-        id: "16"
-      }, "16"), React.createElement("option", {
-        id: "17"
-      }, "17"), React.createElement("option", {
-        id: "18"
-      }, "18"), React.createElement("option", {
-        id: "19"
-      }, "19"), React.createElement("option", {
-        id: "20"
-      }, "20"), React.createElement("option", {
-        id: "21"
-      }, "21"), React.createElement("option", {
-        id: "22"
-      }, "22"), React.createElement("option", {
-        id: "23"
-      }, "23"), React.createElement("option", {
-        id: "24"
-      }, "24"), React.createElement("option", {
-        id: "25"
-      }, "25"), React.createElement("option", {
-        id: "26"
-      }, "26"), React.createElement("option", {
-        id: "27"
-      }, "27"), React.createElement("option", {
-        id: "28"
-      }, "28"), React.createElement("option", {
-        id: "29"
-      }, "29"), React.createElement("option", {
-        id: "30"
-      }, "30"), React.createElement("option", {
-        id: "31"
-      }, "31"), React.createElement("option", {
-        id: "32"
-      }, "32"), React.createElement("option", {
-        id: "33"
-      }, "33"), React.createElement("option", {
-        id: "34"
-      }, "34"), React.createElement("option", {
-        id: "35"
-      }, "35"), React.createElement("option", {
-        id: "36"
-      }, "36"), React.createElement("option", {
-        id: "37"
-      }, "37"), React.createElement("option", {
-        id: "38"
-      }, "38"), React.createElement("option", {
-        id: "39"
-      }, "39"), React.createElement("option", {
-        id: "40"
-      }, "40"), React.createElement("option", {
-        id: "41"
-      }, "41"), React.createElement("option", {
-        id: "42"
-      }, "42"), React.createElement("option", {
-        id: "43"
-      }, "43"), React.createElement("option", {
-        id: "44"
-      }, "44"), React.createElement("option", {
-        id: "45"
-      }, "45"), React.createElement("option", {
-        id: "46"
-      }, "46"), React.createElement("option", {
-        id: "47"
-      }, "47"), React.createElement("option", {
-        id: "48"
-      }, "48"), React.createElement("option", {
-        id: "49"
-      }, "49"), React.createElement("option", {
-        id: "50"
-      }, "50"), React.createElement("option", {
-        id: "51"
-      }, "51"), React.createElement("option", {
-        id: "52"
-      }, "52"), React.createElement("option", {
-        id: "53"
-      }, "53"), React.createElement("option", {
-        id: "54"
-      }, "54"), React.createElement("option", {
-        id: "55"
-      }, "55"), React.createElement("option", {
-        id: "56"
-      }, "56"), React.createElement("option", {
-        id: "57"
-      }, "57"), React.createElement("option", {
-        id: "58"
-      }, "58"), React.createElement("option", {
-        id: "59"
-      }, "59")));
+      }, this.getMinutes()));
+    }
+  }, {
+    key: "getHours",
+    value: function getHours() {
+      var hours = [];
+      var leap = parseInt(this.state.hours) || 1;
+
+      for (var i = 0; i < 24; i = i + leap) {
+        hours.push(React.createElement("option", {
+          id: i,
+          value: i < 10 ? "0".concat(i) : i
+        }, i < 10 ? "0".concat(i) : i));
+      }
+
+      return hours;
+    }
+  }, {
+    key: "getMinutes",
+    value: function getMinutes() {
+      var minutes = [];
+      var leap = parseInt(this.state.minutes) || 1;
+
+      for (var i = 0; i < 60; i = i + leap) {
+        minutes.push(React.createElement("option", {
+          id: i,
+          value: i < 10 ? "0".concat(i) : i
+        }, i < 10 ? "0".concat(i) : i));
+      }
+
+      return minutes;
     }
   }]);
 
-  return Cron;
+  return CustomCron;
 }(Component);
 
-export { Cron as default };
+export { CustomCron as default };

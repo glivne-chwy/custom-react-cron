@@ -3,6 +3,7 @@ import _createClass from "@babel/runtime/helpers/esm/createClass";
 import _possibleConstructorReturn from "@babel/runtime/helpers/esm/possibleConstructorReturn";
 import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime/helpers/esm/inherits";
+import _readOnlyError from "@babel/runtime/helpers/esm/readOnlyError";
 import React, { Component } from 'react';
 import cronstrue from 'cronstrue';
 import Minutes from './minutes';
@@ -12,29 +13,39 @@ import Weekly from './weekly';
 import Monthly from './monthly';
 import Yearly from './yearly'; // import './cron-builder.css';
 
-var tabs = ['Minutes', 'Hourly', 'Daily', 'Weekly', 'Monthly']; //,'Yearly'
+var defaultTabs = ['Minutes', 'Hourly', 'Daily', 'Weekly', 'Monthly']; //,'Yearly'
 
-var Cron =
+var defaultTabsVal = {
+  Minutes: ['0', '0/1', '*', '*', '*', '?', '*'],
+  Hourly: ['0', '0', '00', '1/1', '*', '?', '*'],
+  Daily: ['0', '0', '00', '1/1', '*', '?', '*'],
+  Weekly: ['0', '0', '00', '?', '*', '*', '*'],
+  Monthly: ['0', '0', '00', '1', '1/1', '?', '*']
+};
+var tabs = [];
+
+var CustomCron =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Cron, _Component);
+  _inherits(CustomCron, _Component);
 
-  function Cron(props) {
+  function CustomCron(props) {
     var _this;
 
-    _classCallCheck(this, Cron);
+    _classCallCheck(this, CustomCron);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Cron).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CustomCron).call(this, props));
     _this.state = {//    selectedTab: tabs[0],
     };
+    tabs = (_readOnlyError("tabs"), props.tabs || defaultTabs);
     return _this;
   }
 
-  _createClass(Cron, [{
+  _createClass(CustomCron, [{
     key: "componentWillMount",
     value: function componentWillMount() {
       if (!this.props.value || this.props.value.split(' ').length !== 7) {
-        this.state.value = ['0', '0', '00', '1/1', '*', '?', '*'];
+        this.state.value = defaultTabsVal[tabs[0]];
         this.state.selectedTab = tabs[0];
         this.parentChange(this.state.value);
       } else {
@@ -44,44 +55,44 @@ function (_Component) {
       var val = this.state.value;
 
       if (val[1].search('/') !== -1 && val[2] == '*' && val[3] == '1/1') {
-        this.state.selectedTab = tabs[0];
+        this.state.selectedTab = defaultTabs[0];
       } else if (val[3] == '1/1') {
-        this.state.selectedTab = tabs[1];
+        this.state.selectedTab = defaultTabs[1];
       } else if (val[3].search('/') !== -1 || val[5] == 'MON-FRI') {
-        this.state.selectedTab = tabs[2];
+        this.state.selectedTab = defaultTabs[2];
       } else if (val[3] === '?') {
-        this.state.selectedTab = tabs[3];
+        this.state.selectedTab = defaultTabs[3];
       } else if (val[3].startsWith('L') || val[4] === '1/1') {
-        this.state.selectedTab = tabs[4];
+        this.state.selectedTab = defaultTabs[4];
       } else {
-        this.state.selectedTab = tabs[0];
+        this.state.selectedTab = defaultTabs[0];
       }
     }
   }, {
     key: "defaultValue",
     value: function defaultValue(tab) {
       switch (tab) {
-        case tabs[0]:
+        case defaultTabs[0]:
           return ['0', '0/1', '*', '*', '*', '?', '*'];
           break;
 
-        case tabs[1]:
+        case defaultTabs[1]:
           return ['0', '0', '00', '1/1', '*', '?', '*'];
           break;
 
-        case tabs[2]:
+        case defaultTabs[2]:
           return ['0', '0', '00', '1/1', '*', '?', '*'];
           break;
 
-        case tabs[3]:
+        case defaultTabs[3]:
           return ['0', '0', '00', '?', '*', '*', '*'];
           break;
 
-        case tabs[4]:
+        case defaultTabs[4]:
           return ['0', '0', '00', '1', '1/1', '?', '*'];
           break;
 
-        case tabs[5]:
+        case defaultTabs[5]:
           return ['0', '0', '00', '1', '1/1', '?', '*'];
           break;
 
@@ -161,6 +172,8 @@ function (_Component) {
         case tabs[1]:
           return React.createElement(Hourly, {
             value: this.state.value,
+            hours: this.props.hours,
+            minutes: this.props.minutes,
             onChange: this.onValueChange.bind(this)
           });
           break;
@@ -168,6 +181,8 @@ function (_Component) {
         case tabs[2]:
           return React.createElement(Daily, {
             value: this.state.value,
+            hours: this.props.hours,
+            minutes: this.props.minutes,
             onChange: this.onValueChange.bind(this)
           });
           break;
@@ -175,6 +190,8 @@ function (_Component) {
         case tabs[3]:
           return React.createElement(Weekly, {
             value: this.state.value,
+            hours: this.props.hours,
+            minutes: this.props.minutes,
             onChange: this.onValueChange.bind(this)
           });
           break;
@@ -182,6 +199,8 @@ function (_Component) {
         case tabs[4]:
           return React.createElement(Monthly, {
             value: this.state.value,
+            hours: this.props.hours,
+            minutes: this.props.minutes,
             onChange: this.onValueChange.bind(this)
           });
           break;
@@ -189,6 +208,8 @@ function (_Component) {
         case tabs[5]:
           return React.createElement(Yearly, {
             value: this.state.value,
+            hours: this.props.hours,
+            minutes: this.props.minutes,
             onChange: this.onValueChange.bind(this)
           });
           break;
@@ -200,7 +221,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return React.createElement("div", {
+      return React.createElement("div", null, this.props.style && React.createElement("style", null, this.props.style), React.createElement("div", {
         className: "cron_builder"
       }, React.createElement("ul", {
         className: "nav nav-tabs"
@@ -210,11 +231,11 @@ function (_Component) {
         className: "cron-builder-bg"
       }, this.getVal()), this.props.showResultCron && React.createElement("div", {
         className: "cron-builder-bg"
-      }, this.state.value.toString().replace(/,/g, ' ').replace(/!/g, ',')));
+      }, this.state.value.toString().replace(/,/g, ' ').replace(/!/g, ','))));
     }
   }]);
 
-  return Cron;
+  return CustomCron;
 }(Component);
 
-export { Cron as default };
+export { CustomCron as default };

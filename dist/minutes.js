@@ -5,22 +5,22 @@ import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { Component } from 'react';
 
-var Cron =
+var CustomCron =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Cron, _Component);
+  _inherits(CustomCron, _Component);
 
-  function Cron(props) {
+  function CustomCron(props) {
     var _this;
 
-    _classCallCheck(this, Cron);
+    _classCallCheck(this, CustomCron);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Cron).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CustomCron).call(this, props));
     _this.state = {};
     return _this;
   }
 
-  _createClass(Cron, [{
+  _createClass(CustomCron, [{
     key: "onChange",
     value: function onChange(e) {
       if (e.target.value > 0 && e.target.value < 60 || e.target.value == '') {
@@ -51,7 +51,7 @@ function (_Component) {
     }
   }]);
 
-  return Cron;
+  return CustomCron;
 }(Component);
 
-export { Cron as default };
+export { CustomCron as default };

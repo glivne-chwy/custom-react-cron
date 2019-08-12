@@ -6,17 +6,17 @@ import _assertThisInitialized from "@babel/runtime/helpers/esm/assertThisInitial
 import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { Component } from 'react';
 
-var Cron =
+var CustomCron =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Cron, _Component);
+  _inherits(CustomCron, _Component);
 
-  function Cron(props) {
+  function CustomCron(props) {
     var _this;
 
-    _classCallCheck(this, Cron);
+    _classCallCheck(this, CustomCron);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Cron).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CustomCron).call(this, props));
     _this.state = {};
     _this.onHourChange = _this.onHourChange.bind(_assertThisInitialized(_this));
     _this.onAtHourChange = _this.onAtHourChange.bind(_assertThisInitialized(_this));
@@ -24,7 +24,7 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(Cron, [{
+  _createClass(CustomCron, [{
     key: "componentWillMount",
     value: function componentWillMount() {
       this.state.value = this.props.value;
@@ -124,8 +124,9 @@ function (_Component) {
     key: "getHours",
     value: function getHours() {
       var hours = [];
+      var leap = parseInt(this.state.hours) || 1;
 
-      for (var i = 0; i < 24; i++) {
+      for (var i = 0; i < 24; i = i + leap) {
         hours.push(React.createElement("option", {
           value: i < 10 ? "0".concat(i) : i
         }, i < 10 ? "0".concat(i) : i));
@@ -137,8 +138,9 @@ function (_Component) {
     key: "getMinutes",
     value: function getMinutes() {
       var minutes = [];
+      var leap = parseInt(this.state.minutes) || 1;
 
-      for (var i = 0; i < 60; i++) {
+      for (var i = 0; i < 60; i = i + leap) {
         minutes.push(React.createElement("option", {
           value: i < 10 ? "0".concat(i) : i
         }, i < 10 ? "0".concat(i) : i));
@@ -148,7 +150,7 @@ function (_Component) {
     }
   }]);
 
-  return Cron;
+  return CustomCron;
 }(Component);
 
-export { Cron as default };
+export { CustomCron as default };
