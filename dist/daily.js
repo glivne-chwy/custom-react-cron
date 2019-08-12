@@ -113,7 +113,7 @@ function (_Component) {
         className: "hours",
         onChange: this.onAtHourChange,
         value: this.state.value[2]
-      }, this.getHours()), React.createElement("select", {
+      }, this.getHours()), "\xA0 : \xA0", React.createElement("select", {
         id: "DailyMinutes",
         className: "minutes",
         onChange: this.onAtMinuteChange,

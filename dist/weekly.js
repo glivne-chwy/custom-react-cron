@@ -125,7 +125,7 @@ function (_Component) {
         className: "hours",
         onChange: this.onAtHourChange,
         value: this.state.value[2]
-      }, this.getHours()), React.createElement("select", _defineProperty({
+      }, this.getHours()), "\xA0 : \xA0", React.createElement("select", _defineProperty({
         value: "DailyMinutes",
         className: "minutes",
         onChange: this.onAtMinuteChange

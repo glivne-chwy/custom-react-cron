@@ -113,7 +113,7 @@ function (_Component) {
         disabled: this.state.every ? true : false,
         onChange: this.onAtHourChange,
         value: this.state.value[2]
-      }, this.getHours()), React.createElement("select", {
+      }, this.getHours()), "\xA0 : \xA0", React.createElement("select", {
         className: "minutes",
         disabled: this.state.every ? true : false,
         onChange: this.onAtMinuteChange,
