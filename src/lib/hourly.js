@@ -61,6 +61,7 @@ export default class CustomCron extends Component {
                         <select className="hours" disabled={this.state.every ? true: false}  onChange={this.onAtHourChange} value={this.state.value[2]}>
                             {this.getHours()}
                         </select>
+                        &nbsp; : &nbsp;
                         <select  className="minutes" disabled={this.state.every ? true: false} onChange={this.onAtMinuteChange} value={this.state.value[1]}>
                             {this.getMinutes()}
                         </select>
