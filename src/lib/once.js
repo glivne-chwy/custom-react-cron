@@ -39,14 +39,14 @@ export default class CustomCron extends Component {
         this.state.value = this.props.value;
         return (<div className="tab-pane" >
                     <div className="well well-small">
-                        &nbsp; On: &nbsp;
+                        &nbsp; In: &nbsp;
                         <DatePicker
                             selected={this.state.startDate}
                             onChange={this.onDayChange}
                             minDate={new Date()}
                         />
                     </div>
-                    &nbsp; On: &nbsp;
+                    &nbsp; At: &nbsp;
                     <select id="DailyHours" className="hours" onChange={this.onAtHourChange} value={this.state.value[2]}>
                         {this.getHours()}                    
                     </select>
