@@ -51,28 +51,7 @@ export default class CustomCron extends Component {
     }
 
     defaultValue(tab) {
-        switch(tab) {
-            case defaultTabs[0] : 
-                return   ['0','0/1','*','*','*','?','*']
-                break;
-            case defaultTabs[1] : 
-                return   ['0','0','00','1/1','*','?','*']
-                break;
-            case defaultTabs[2] : 
-                return   ['0','0','00','1/1','*','?','*']
-                break;
-            case defaultTabs[3] : 
-                return   ['0','0','00','?','*','*','*']
-                break;
-            case defaultTabs[4] : 
-                return   ['0','0','00','1','1/1','?','*']
-                break;
-            case defaultTabs[5] : 
-                return   ['0','0','00','1','1/1','?','*']
-                break;
-            default: 
-                return
-        }
+       return defaultTabsVal[tab];
     }
 
     tabChanged(tab) {
@@ -112,22 +91,22 @@ export default class CustomCron extends Component {
 
     getComponent(tab) {
         switch(tab) {
-            case tabs[0] : 
+            case defaultTabs[0] : 
                 return <Minutes value={this.state.value} onChange={this.onValueChange.bind(this)}/>
                 break;
-            case tabs[1] : 
+            case defaultTabs[1] : 
                 return <Hourly value={this.state.value} hours={this.props.hours} minutes={this.props.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
-            case tabs[2] : 
+            case defaultTabs[2] : 
                 return <Daily value={this.state.value} hours={this.props.hours} minutes={this.props.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
-            case tabs[3] : 
+            case defaultTabs[3] : 
                 return <Weekly value={this.state.value} hours={this.props.hours} minutes={this.props.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
-            case tabs[4] : 
+            case defaultTabs[4] : 
                 return <Monthly value={this.state.value} hours={this.props.hours} minutes={this.props.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
-            case tabs[5] : 
+            case defaultTabs[5] : 
                 return <Yearly value={this.state.value} hours={this.props.hours} minutes={this.props.minutes} onChange={this.onValueChange.bind(this)}/>
                 break;
             default: 
