@@ -46,6 +46,7 @@ export default class CustomCron extends Component {
                             minDate={new Date()}
                         />
                     </div>
+                    
                     &nbsp; At: &nbsp;
                     <select id="DailyHours" className="hours" onChange={this.onAtHourChange} value={this.state.value[2]}>
                         {this.getHours()}                    
@@ -74,10 +75,7 @@ export default class CustomCron extends Component {
     }
     getNextHour() {
         const hourNow = this.state.startDate.getHours();
-        if (hourNow < 23) {
-            return hourNow + 1;
-        }
-        return 23;
+        return (hourNow < 23) ? hourNow + 1 : 23;
     }
     getMinutes() {
         let minutes = [];
