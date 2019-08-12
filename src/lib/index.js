@@ -45,7 +45,7 @@ export default class CustomCron extends Component {
         } else if (val[3].startsWith('L') || val[4] === '1/1') {
             this.state.selectedTab = defaultTabs[4];
         } else {
-            this.state.selectedTab = defaultTabs[0];
+            this.state.selectedTab = tabs[0];
         }
        
     }
