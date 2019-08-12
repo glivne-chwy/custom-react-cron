@@ -72,7 +72,7 @@ export default class CustomCron extends Component {
     }
     getHours() {
         let hours = [];
-        let leap = parseInt(this.state.hours) || 1;
+        let leap = parseInt(this.props.hours) || 1;
         for(let i = 0 ; i<24 ; i = i + leap) {
             hours.push(<option value={i < 10 ? `0${i}` : i}>{i < 10 ? `0${i}` : i}</option>)
         }
@@ -80,7 +80,7 @@ export default class CustomCron extends Component {
     }
     getMinutes() {
         let minutes = [];
-        let leap = parseInt(this.state.minutes) || 1;
+        let leap = parseInt(this.props.minutes) || 1;
         for(let i = 0 ; i<60 ; i = i + leap) {
             minutes.push(<option value={i < 10 ? `0${i}` : i}>{i < 10 ? `0${i}` : i}</option>)
         }

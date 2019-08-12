@@ -124,7 +124,7 @@ function (_Component) {
     key: "getHours",
     value: function getHours() {
       var hours = [];
-      var leap = parseInt(this.state.hours) || 1;
+      var leap = parseInt(this.props.hours) || 1;
 
       for (var i = 0; i < 24; i = i + leap) {
         hours.push(React.createElement("option", {
@@ -139,7 +139,7 @@ function (_Component) {
     key: "getMinutes",
     value: function getMinutes() {
       var minutes = [];
-      var leap = parseInt(this.state.minutes) || 1;
+      var leap = parseInt(this.props.minutes) || 1;
 
       for (var i = 0; i < 60; i = i + leap) {
         minutes.push(React.createElement("option", {

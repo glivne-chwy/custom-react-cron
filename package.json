@@ -1,6 +1,6 @@
 {
   "name": "custom-react-cron",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Custom react component to generate cron expression",
   "keywords": [
     "Custom react cron generator",
@@ -16,7 +16,8 @@
   ],
   "author": "Guy Livne (cloning Sojin antony)",
   "dependencies": {
-    "cronstrue": "^1.72.0"
+    "cronstrue": "^1.72.0",
+    "react-datepicker": "^2.8.0"
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
