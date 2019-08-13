@@ -88,7 +88,6 @@ function (_Component) {
   }, {
     key: "getHours",
     value: function getHours() {
-      console.log("getHours");
       var hours = [];
       var leap = parseInt(this.props.hours) || 1;
       var startHour = this.isToday() ? this.getNextHour() : 0;

@@ -58,7 +58,6 @@ export default class CustomCron extends Component {
                 </div>)
     }
     getHours() {
-        console.log("getHours");
         let hours = [];
         let leap = parseInt(this.props.hours) || 1;
         let startHour = this.isToday() ? this.getNextHour() : 0;

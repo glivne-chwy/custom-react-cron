@@ -1,10 +1,10 @@
-# react-cron-generator
+# custom-react-cron
 
 Simple customizable react component to generate cron expression
 
 ## Getting Started
 
-Package helps to build linux scheduler cron expression.
+Package helps to build linux customized scheduler cron expression.
 Make sure you have include bootstrap in your project
 
 ```
