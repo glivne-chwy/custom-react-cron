@@ -13,7 +13,7 @@ export default class CustomCron extends Component {
     }
     componentWillMount() {
         this.state.value = this.props.value;
-        if(this.state.value[2].split('/')[1] || this.state.value[2] === '*') {
+        if(this.state.value[2].search('0/') === 0 || this.state.value[2] === '*') {
             this.state.every = true;
         }
     }
@@ -25,20 +25,17 @@ export default class CustomCron extends Component {
             } else {
                 val[2] = `0/${e.target.value}`;
             }
-            val[3] = '1/1';
             this.props.onChange(val)
         } 
     }
     onAtHourChange(e) {
         let val = ['0',this.state.value[1],'*','*','*','?','*']
-        val[2] = `${e.target.value}`;
-        val[3] = '1/1'
+        val[2] = `${e.target.value}/1`;
         this.props.onChange(val)
     }
     onAtMinuteChange(e) {
         let val = ['0','*',this.state.value[2],'*','*','?','*']
         val[1] = `${e.target.value}`;
-        val[3] = '1/1'
         this.props.onChange(val)
     }
 
@@ -49,7 +46,7 @@ export default class CustomCron extends Component {
             <div className="tab-content">              
                 <div className="tab-pane active">
                     <div className="well well-small">
-                        <input type="radio" onClick={(e) => {this.setState({every:true}) ; this.props.onChange(['0','0','0/1','1/1','*','?','*'])}} checked={this.state.every ? true:false} />
+                        <input type="radio" onClick={(e) => {this.setState({every:true}) ; this.props.onChange(['0','0','0/1','*','*','?','*'])}} checked={this.state.every ? true:false} />
                         <span >&nbsp;Every &nbsp;</span>
                         <input disabled={this.state.every ? false: true} type="Number" onChange={this.onHourChange} value={this.state.value[2].split('/')[1] ? this.state.value[2].split('/')[1] : ''}  />
                         <span >&nbsp;hour(s)&nbsp;</span>
@@ -58,7 +55,7 @@ export default class CustomCron extends Component {
                     <div className="col-md-offset-2 col-md-6 text_align_right">
                         <input type="radio" onClick={(e) => {this.setState({every:false}); this.props.onChange()}} checked={this.state.every ? false : true}/>
                             <span className="margin-right-10 ">&nbsp;At&nbsp;</span>
-                        <select className="hours" disabled={this.state.every ? true: false}  onChange={this.onAtHourChange} value={this.state.value[2]}>
+                        <select className="hours" disabled={this.state.every ? true: false}  onChange={this.onAtHourChange} value={this.state.value[2].split('/')[0] ? this.state.value[2].split('/')[0] : '00'}>
                             {this.getHours()}
                         </select>
                         &nbsp; : &nbsp;

@@ -5,12 +5,17 @@ import "react-datepicker/dist/react-datepicker.css";
 export default class CustomCron extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            startDate: new Date()
-        };
+        const startDate = this.getStartDate(props);
+        this.state = { startDate };
         this.onDayChange = this.onDayChange.bind(this);
         this.onAtHourChange = this.onAtHourChange.bind(this);
         this.onAtMinuteChange = this.onAtMinuteChange.bind(this);
+    }
+    getStartDate(props) {
+        if (props.value && props.value.length) {
+            return new Date(`${props.value[4]}/${props.value[3]}/${props.value[6]}`)
+        }
+        return new Date();
     }
     componentWillMount() {
         this.state.value = this.props.value;

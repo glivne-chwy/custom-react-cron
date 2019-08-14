@@ -21,7 +21,7 @@ const defaultTabsVal = {
         date.getFullYear().toString()
     ],
     Minutes: ['0','0/1','*','*','*','?','*'],
-    Hourly: ['0','0','00','1/1','*','?','*'],
+    Hourly: ['0','0','0/1','*','*','?','*'],
     Daily: ['0','0','00','1/1','*','?','*'],
     Weekly: ['0','0','00','?','*','*','*'],
     Monthly:['0','0','00','1','1/1','?','*']
@@ -45,18 +45,18 @@ export default class CustomCron extends Component {
             this.state.value = this.props.value.replace(/,/g, '!').split(' ');
         }
         let val = this.state.value;
-        if((val[4] === date.getDate().toString())) {
+        if((val[6] !== '*')) {
             this.state.selectedTab = defaultTabs[0];
         } else if((val[1].search('/') !== -1) && (val[2] == '*') && (val[3] == '1/1')) {
             this.state.selectedTab = defaultTabs[1];
-        } else if((val[3] == '1/1')) {
+        } else if((val[2].search('/') !== -1)) {
             this.state.selectedTab = defaultTabs[2];
         } else if((val[3].search('/') !== -1) || (val[5] == 'MON-FRI')) {
             this.state.selectedTab = defaultTabs[3];
         } else if (val[3] === '?') {
             this.state.selectedTab = defaultTabs[4];
         } else if (val[3].startsWith('L') || val[5] === '1/1') {
-            this.state.selectedTab = defaultTabs[6];
+            this.state.selectedTab = defaultTabs[5];
         } else {
             this.state.selectedTab = tabs[0];
         }
@@ -80,8 +80,8 @@ export default class CustomCron extends Component {
         if(val && val.length) {
             this.setState({value:val})
         } else { 
-            this.setState({value:['0','0','00','1/1','*','?','*']})
-            val = ['0','0','00','1/1','*','?','*'];
+            this.setState({value:['0','0','00','*','*','?','*']})
+            val = ['0','0','00','*','*','?','*'];
         }
        this.parentChange(val)
     }
