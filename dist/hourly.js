@@ -29,7 +29,7 @@ function (_Component) {
     value: function componentWillMount() {
       this.state.value = this.props.value;
 
-      if (this.state.value[2].split('/')[1] || this.state.value[2] === '*') {
+      if (this.state.value[2].search('0/') === 0 || this.state.value[2] === '*') {
         this.state.every = true;
       }
     }
@@ -45,7 +45,6 @@ function (_Component) {
           val[2] = "0/".concat(e.target.value);
         }
 
-        val[3] = '1/1';
         this.props.onChange(val);
       }
     }
@@ -53,8 +52,7 @@ function (_Component) {
     key: "onAtHourChange",
     value: function onAtHourChange(e) {
       var val = ['0', this.state.value[1], '*', '*', '*', '?', '*'];
-      val[2] = "".concat(e.target.value);
-      val[3] = '1/1';
+      val[2] = "".concat(e.target.value, "/1");
       this.props.onChange(val);
     }
   }, {
@@ -62,7 +60,6 @@ function (_Component) {
     value: function onAtMinuteChange(e) {
       var val = ['0', '*', this.state.value[2], '*', '*', '?', '*'];
       val[1] = "".concat(e.target.value);
-      val[3] = '1/1';
       this.props.onChange(val);
     }
   }, {
@@ -84,7 +81,7 @@ function (_Component) {
             every: true
           });
 
-          _this2.props.onChange(['0', '0', '0/1', '1/1', '*', '?', '*']);
+          _this2.props.onChange(['0', '0', '0/1', '*', '*', '?', '*']);
         },
         checked: this.state.every ? true : false
       }), React.createElement("span", null, "\xA0Every \xA0"), React.createElement("input", {
@@ -112,7 +109,7 @@ function (_Component) {
         className: "hours",
         disabled: this.state.every ? true : false,
         onChange: this.onAtHourChange,
-        value: this.state.value[2]
+        value: this.state.value[2].split('/')[0] ? this.state.value[2].split('/')[0] : '00'
       }, this.getHours()), "\xA0 : \xA0", React.createElement("select", {
         className: "minutes",
         disabled: this.state.every ? true : false,

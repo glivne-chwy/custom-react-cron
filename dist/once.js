@@ -20,8 +20,11 @@ function (_Component) {
     _classCallCheck(this, CustomCron);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CustomCron).call(this, props));
+
+    var startDate = _this.getStartDate(props);
+
     _this.state = {
-      startDate: new Date()
+      startDate: startDate
     };
     _this.onDayChange = _this.onDayChange.bind(_assertThisInitialized(_this));
     _this.onAtHourChange = _this.onAtHourChange.bind(_assertThisInitialized(_this));
@@ -30,6 +33,15 @@ function (_Component) {
   }
 
   _createClass(CustomCron, [{
+    key: "getStartDate",
+    value: function getStartDate(props) {
+      if (props.value && props.value.length) {
+        return new Date("".concat(props.value[4], "/").concat(props.value[3], "/").concat(props.value[6]));
+      }
+
+      return new Date();
+    }
+  }, {
     key: "componentWillMount",
     value: function componentWillMount() {
       this.state.value = this.props.value;
